@@ -39,7 +39,14 @@ console.log('Hello World');
         res.json({
           echo: word
         });
-      });
+    });
+
+    app.get("/name", (req, res) => {
+        var { first:firstName, last: lastName} = req.query;
+        res.json({
+            name : `${firstName} ${lastName}`
+        })
+    })
         
 
 
