@@ -1,5 +1,7 @@
 let express = require('express');
 let app = express();
+var vcase = "uppercase";
+require('dotenv').config()
 console.log('Hello World');
     app.use("/public", express.static(__dirname + "/public"));
     app.get('/', (req, res) =>{
@@ -8,8 +10,16 @@ console.log('Hello World');
     });
 
     app.get('/json' , (req, res) =>{
-        res.json({message : "Hello json"});
+        let mess = "Hello json";
+        if(process.env.MESSAGE_STYLE == vcase){
+            mess = mess.toUpperCase();
+            
+        }
+
+        res.json({message : mess});
+        
     });
+        
 
 
 
