@@ -16,7 +16,7 @@ console.log('Hello World');
         res.json({message : mess});
     });
 
-    app.use((req, res, next) => {
+    app.use(function middleware(req, res, next){
         var str = req.method + " " + req.path + "-" + req.ip;
         console.log(str);
         next();
