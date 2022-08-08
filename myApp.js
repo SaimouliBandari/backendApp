@@ -1,7 +1,8 @@
 let express = require('express');
 let app = express();
+let bodyParser = require('body-parser');
 var vcase = "uppercase";
-require('dotenv').config()
+require('dotenv').config();
 console.log('Hello World');
     app.use("/public", express.static(__dirname + "/public"));
     app.use(function middleware(req, res, next){
@@ -9,6 +10,8 @@ console.log('Hello World');
         console.log(str);
         next();
     });
+    app.use(bodyParser.urlencoded({extended : false}));
+    app.use(bodyParser.json());
     app.get('/', (req, res) =>{
         res.sendFile(__dirname + "/views/index.html");
     });
@@ -46,7 +49,7 @@ console.log('Hello World');
         res.json({
             name : `${firstName} ${lastName}`
         })
-    })
+    });
         
 
 
