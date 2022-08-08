@@ -50,6 +50,11 @@ console.log('Hello World');
             name : `${firstName} ${lastName}`
         })
     });
+
+    app.post('/name', function(req, res){
+        var str = req.body.first + " " + req.body.last;
+        res.json({name : str});
+    });
         
 
 
